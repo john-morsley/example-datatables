@@ -52,7 +52,16 @@
             var dt = new DataTable("#example", {
                 ajax: {
                     url: "data",
-                    dataSrc: "data"
+                    //dataSrc: "" // Empty means use the root element
+                    dataSrc: function(items) {
+                    // The following can be used to manipulate data before dataTables uses it.
+                    //    //debugger;
+                    //    for(let i = 0; i < items.length; i++) {
+                    //        var item = items[i];
+                    //        //alert(item.id + " - " + item.name);
+                    //    }
+                        return items;
+                    }
                 },
                 columns: [
                     { 

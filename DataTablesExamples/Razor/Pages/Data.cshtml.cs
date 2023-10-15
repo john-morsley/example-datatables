@@ -28,6 +28,7 @@ public class DataModel : PageModel
     //    return new JsonResult(jsonData);
     //}
 
+    //public async Task<IActionResult> OnGet()
     public async Task<IActionResult> OnGet()
     {
         // This action will return raw JSON to be consumed by the DataTable.
@@ -37,17 +38,23 @@ public class DataModel : PageModel
         for (int i = 1; i <= 10; i++)
         {
             tests.Add(new Test { Id = Guid.NewGuid().ToString(), Name = $"Test {i:0#}" });
-        }        
+        }
 
-        var jsonData = new
-        {
-            data = tests
-        };
+        //var jsonData = new
+        //{
+        //    data = tests
+        //};
+
+        //var jsonData = new
+        //{
+        //    tests
+        //};
 
         await Task.CompletedTask; // Simulate an asynchronous call
 
         // Serialize the data to JSON and return it
-        var jsonResult = new JsonResult(jsonData);
+        //var jsonResult = new JsonResult(jsonData);
+        var jsonResult = new JsonResult(tests);
         return jsonResult;
     }
 }
